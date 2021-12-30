@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import TodoList from "./Todo/TodoList";
 
 function App() {
+  const styles = {
+    p: {
+      fontSize: "20px",
+      color: "red",
+    },
+    container: {
+      width: "80%",
+      margin: "50px auto",
+    },
+  };
+  let todos = [
+    {
+      id: 1,
+      title: "JS",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "NodeJS",
+      completed: false,
+    },
+    {
+      id: 3,
+      title: "React.JS",
+      completed: false,
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={styles.container}>
+      <h1>Todo List</h1>
+      <TodoList todos={todos} />
     </div>
   );
 }
