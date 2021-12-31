@@ -1,5 +1,26 @@
-ffdvfd
+# YAML = Yet another markup language
 
-dfvdfd
-
-dfvfdvdfvf
+# keyname: value
+# myapp:
+#   service: practice-project
+#   test1: script1
+#   test: script2
+#   myArray:
+#     - key1: value1
+#       keyrandom: valuerandom
+#     - 2
+#     - 3
+#     - 4
+#     - 5
+# Multiline strings
+# name: |
+#   George
+#   Connor
+#   Alex
+name: My first github action
+on: [push]
+jobs:
+  print-happy-new-year:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Happy New Year 2022!!!!"
