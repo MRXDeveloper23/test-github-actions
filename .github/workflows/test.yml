@@ -20,7 +20,8 @@
 name: My first github action
 on: [push]
 jobs:
-  print-happy-new-year:
+  build-app:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Happy New Year 2022!!!!"
+      - uses: actions/checkout@v2
+      - run: tree
