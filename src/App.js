@@ -1,39 +1,45 @@
-import "./App.css";
-import TodoList from "./Todo/TodoList";
+import { useState, Fragment } from 'react';
+import './App.css';
+import BackwardCounter from './Components/Counter/BackwardCounter';
+import UpwardCounter from './Components/Counter/UpwardCounter';
+import Expenses from './Components/Expenses/Expenses';
+import NewExpense from './Components/NewExpense/NewExpense';
 
 function App() {
-  const styles = {
-    p: {
-      fontSize: "20px",
-      color: "red",
-    },
-    container: {
-      width: "80%",
-      margin: "50px auto",
-    },
-  };
-  let todos = [
+  const INITIAL_EXPENSES = [
     {
-      id: 1,
-      title: "JS",
-      completed: false,
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
     },
     {
-      id: 2,
-      title: "NodeJS",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "React.JS",
-      completed: false,
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
     },
   ];
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+  const addExpenseHandler = (expenseData) => {
+    setExpenses((prevExpenses) => {
+      return [expenseData, ...prevExpenses];
+    });
+  };
   return (
-    <div style={styles.container}>
-      <h1>Todo List</h1>
-      <TodoList todos={todos} />
-    </div>
+    <Fragment>
+      <BackwardCounter />
+      <UpwardCounter />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
+    </Fragment>
   );
 }
 
